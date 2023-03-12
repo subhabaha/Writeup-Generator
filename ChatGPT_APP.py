@@ -2,7 +2,7 @@ import openai
 import streamlit as st
 #from charset_normalizer import md__mypyc
 
-openai.api_key="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"
+openai.api_key=config.api_key
 
 def main():
     st.title("Topic Writeup and References Generator")
