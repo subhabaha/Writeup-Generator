@@ -7,7 +7,9 @@ openai.api_key=config.api_key
 
 def main():
     st.title("Literature Review Writer")
-    st.text('The app has been developed by Dr. Subhabaha Pal. The background AI model used is ChatGPT model developed by OpenAI. Please mail to subhabaha@msn.com for suggestions.')
+    st.text('This app has been developed by Dr. Subhabaha Pal.')
+    st.text('The background AI model used is ChatGPT model developed by OpenAI.') 
+    st.text('Please mail to subhabaha@msn.com for suggestions and improvements.')
     notes = st.text_area("Enter Topic Information:")
     if st.button("Generate Literature Review"):
         with st.spinner("Generating Writeup and References..."):
