@@ -7,7 +7,7 @@ openai.api_key=config.api_key
 
 def main():
     st.title("Literature Review Writer")
-    st.caption('This app has been developed by :red[Dr. Subhabaha Pal].')
+    st.subheader('This app has been developed by :red[Dr. Subhabaha Pal].')
     st.text('The background AI model used is ChatGPT model developed by OpenAI.') 
     st.text('Please mail to subhabaha@msn.com for suggestions and improvements.')
     st.text('Please write any topic of interest in the below box to get detailed writeup.')
