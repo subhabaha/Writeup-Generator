@@ -12,7 +12,7 @@ def main():
         with st.spinner("Generating Writeup and References..."):
             response = openai.Completion.create(
               model="text-davinci-003",
-              prompt=f"I want you to write literature review on below topic.\n\n{notes}\n\nDescription:",
+              prompt=f"I want you to write literature review with references and citations on below topic.\n\n{notes}\n\nDescription:",
               temperature=0.7,
               max_tokens=4000,
               top_p=1,
