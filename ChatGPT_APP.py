@@ -6,9 +6,9 @@ import config
 openai.api_key=config.api_key
 
 def main():
-    st.title("Topic Writeup and References Generator")
+    st.title("Literature Review Writer")
     notes = st.text_area("Enter Topic Information:")
-    if st.button("Generate Writeup and References"):
+    if st.button("Generate Literature Review"):
         with st.spinner("Generating Writeup and References..."):
             response = openai.Completion.create(
               model="text-davinci-003",
