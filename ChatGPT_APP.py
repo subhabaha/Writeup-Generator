@@ -1,6 +1,7 @@
 import openai
 import streamlit as st
 #from charset_normalizer import md__mypyc
+import config
 
 openai.api_key=config.api_key
 
