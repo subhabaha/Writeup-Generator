@@ -10,6 +10,7 @@ def main():
     st.text('This app has been developed by Dr. Subhabaha Pal.')
     st.text('The background AI model used is ChatGPT model developed by OpenAI.') 
     st.text('Please mail to subhabaha@msn.com for suggestions and improvements.')
+    st.text('Please write any topic of interest in the below box to get detailed writeup.')
     notes = st.text_area("Enter Topic Information:")
     if st.button("Generate Literature Review"):
         with st.spinner("Generating Writeup and References..."):
