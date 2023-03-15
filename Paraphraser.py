@@ -7,12 +7,12 @@ openai.api_key=config.api_key
 
 def main():
     st.title("Paraphraser")
-    notes = st.text_area("Enter Text to Paraphraser:")
+    notes = st.text_area("Enter Text to Paraphrase:")
     if st.button("Generate Writeup"):
         with st.spinner("Generating Writeup ..."):
             response = openai.Completion.create(
               model="text-davinci-003",
-              prompt=f"paraphrase and extend the text \n\n{notes}\n\nDescription:",
+              prompt=f"write detailed literature review with references and in-line citations on topic \n\n{notes}\n\nDescription:",
               temperature=0.7,
               max_tokens=3000,
               top_p=1,
