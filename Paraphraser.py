@@ -11,7 +11,7 @@ def main():
     if st.button("Generate Writeup"):
         with st.spinner("Generating Writeup ..."):
             response = openai.Completion.create(
-              model="text-davinci-003",
+              model="gpt-4",
               prompt=f"extend the text \n\n{notes}\n\nDescription:",
               temperature=0.7,
               max_tokens=3000,
