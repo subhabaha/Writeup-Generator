@@ -14,7 +14,7 @@ def main():
               model="text-davinci-003",
               prompt=f"I want you to paraphrase and extend the text \n\n{notes}\n\nDescription:",
               temperature=0.7,
-              max_tokens=100000,
+              max_tokens=4097,
               top_p=1,
               frequency_penalty=0,
               presence_penalty=0
