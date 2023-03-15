@@ -12,7 +12,7 @@ def main():
         with st.spinner("Generating Writeup ..."):
             response = openai.Completion.create(
               model="text-davinci-003",
-              prompt=f"Paraphrase the text \n\n{notes}\n\nDescription:",
+              prompt=f"Paraphrase and extend the text \n\n{notes}\n\nDescription:",
               temperature=0.7,
               max_tokens=3000,
               top_p=1,
