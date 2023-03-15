@@ -11,7 +11,7 @@ def main():
     if st.button("Generate Writeup"):
         with st.spinner("Generating Writeup ..."):
             response = openai.Completion.create(
-              model="gpt-4",
+              model="gpt-3.5-turbo-0301",
               prompt=f"paraphrase and extend the text \n\n{notes}\n\nDescription:",
               temperature=0.7,
               max_tokens=3000,
