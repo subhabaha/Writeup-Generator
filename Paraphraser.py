@@ -12,7 +12,7 @@ def main():
         with st.spinner("Generating Writeup ..."):
             response = openai.ChatCompletion.create(
               model="gpt-3.5-turbo-0301",
-              prompt=f"paraphrase and extend the text \n\n{notes}\n\nDescription:",
+              messages=f"paraphrase and extend the text \n\n{notes}\n\nDescription:",
               temperature=0.7,
               max_tokens=3000,
               top_p=1,
