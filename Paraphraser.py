@@ -12,7 +12,7 @@ def main():
         with st.spinner("Generating Writeup ..."):
             response = openai.ChatCompletion.create(
               model="gpt-3.5-turbo",
-              messages=[{'role':'user','content':f'write scientific literature review and include references and in-line citations topic \n\n{notes}\n\nDescription:'}]
+              messages=[{'role':'user','content':f'write detailed literature review and include real references and in-line citations on topic \n\n{notes}\n\nDescription:'}]
               #temperature=0.7,
               #max_tokens=3000,
               #top_p=1,
