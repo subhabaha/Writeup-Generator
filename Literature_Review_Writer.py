@@ -6,13 +6,16 @@ import config
 openai.api_key=config.api_key
 
 def main():
-    st.title("Literature Review Writer")
+    st.title("Automated Writeup Generator")
     st.subheader('This app has been developed by :red[Dr. Subhabaha Pal].')
+    st.text('This app is supposed to help in writing literature review and writeup on any topic.')
     st.text('The background AI model used is ChatGPT model developed by OpenAI.') 
     st.text('Please mail to subhabaha@msn.com for suggestions and improvements.')
-    st.text('Please write any topic of interest in the below box to get detailed writeup. This is for reference purpose only and the researcher requested to cross-check validity of the generated content before final use.')
+    st.text('Please write any topic of interest in the below box to get detailed writeup.')
+    st.text('This is for reference purpose only.')
+    st.text('Please Note: The researcher is suggested to cross-check validity of the generated content before final use in any manuscript.')
     notes = st.text_area("Enter Topic Information:")
-    if st.button("Generate Literature Review"):
+    if st.button("Generate Writeup"):
         with st.spinner("Generating Writeup ...."):
             response = openai.ChatCompletion.create(
               model="gpt-3.5-turbo",
