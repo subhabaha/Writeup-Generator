@@ -7,7 +7,7 @@ openai.api_key=config.api_key
 
 def main():
     st.title("Summarizer")
-    st.text(''This app has been developed by :red[Dr. Subhabaha Pal].')
+    st.subheader(''This app has been developed by :red[Dr. Subhabaha Pal].')
     notes = st.text_area("Enter Text to summarize:")
     if st.button("Generate Writeup"):
         with st.spinner("Generating Writeup ..."):
