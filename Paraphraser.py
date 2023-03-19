@@ -6,8 +6,8 @@ import config
 openai.api_key=config.api_key
 
 def main():
-    st.title("Paraphraser")
-    notes = st.text_area("Enter Text to Paraphrase:")
+    st.title("Summarizer")
+    notes = st.text_area("Enter Text to summarize:")
     if st.button("Generate Writeup"):
         with st.spinner("Generating Writeup ..."):
             response = openai.ChatCompletion.create(
