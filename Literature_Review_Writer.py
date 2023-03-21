@@ -34,6 +34,9 @@ def main():
         
         st.subheader("Generated Writeup:")
         st.write(description)
+        st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
+        st.write(x.json()['text'])
+        
 
 
 if __name__ == '__main__':
