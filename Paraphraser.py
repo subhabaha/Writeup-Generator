@@ -21,7 +21,7 @@ def main():
               #frequency_penalty=0,
               #presence_penalty=0
             )
-            myobj = {'input': response['choices'][0]['message']['content'], 'email': email, 'key':config.wordai_api_key }
+            myobj = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
             x = requests.post(wordai_url, json = myobj)
 
 
