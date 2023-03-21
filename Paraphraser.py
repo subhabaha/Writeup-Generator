@@ -25,9 +25,11 @@ def main():
             x = requests.post(config.wordai_url, json = myobj)
 
 
-        description = 'AI-Generated Content\n\n\n' + response['choices'][0]['message']['content'] + '\n\n\n\n' + 'Modified Content with WordAI to avoid AI Tool Detection'+'\n\n\n\n'+x.json()['text']
-        st.subheader("Generated Writeup:")
+        description = response['choices'][0]['message']['content'] 
+        st.subheader("Generated Summarized Writeup")
         st.write(description)
+        st.subheader("Modified Content with WordAI to avoid AI Tool Detection")
+        st.write(x.json()['text'])        
 
 
 if __name__ == '__main__':
