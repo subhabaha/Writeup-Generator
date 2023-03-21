@@ -30,9 +30,9 @@ def main():
             myobj = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
             x = requests.post(config.wordai_url, json = myobj)
 
-        description = 'AI-Generated Content\n\n\n' + response['choices'][0]['message']['content'] + '\n\n\n\n' + 'Modified Content with WordAI to avoid AI Tool Detection'+'\n\n\n\n'+x.json()['text']
+        description = response['choices'][0]['message']['content'] 
         
-        st.subheader("Generated Writeup:")
+        st.subheader("Generated Writeup")
         st.write(description)
         st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
         st.write(x.json()['text'])
