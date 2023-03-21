@@ -22,7 +22,7 @@ def main():
               #presence_penalty=0
             )
             myobj = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
-            x = requests.post(wordai_url, json = myobj)
+            x = requests.post(config.wordai_url, json = myobj)
 
 
         description = response['choices'][0]['message']['content'] + '\n\n\n\n' + 'Modified Content with WordAI'+'\n'+x.json()['text']
