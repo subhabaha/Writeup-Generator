@@ -21,7 +21,11 @@ def main():
               #frequency_penalty=0,
               #presence_penalty=0
             )
-        description = response['choices'][0]['message']['content']
+            myobj = {'input': response['choices'][0]['message']['content'], 'email': email, 'key':config.wordai_api_key }
+            x = requests.post(wordai_url, json = myobj)
+
+
+        description = response['choices'][0]['message']['content'] + '\n\n\n\n' + 'Modified Content with WordAI'+'\n'+x.json()['text']
         st.subheader("Generated Writeup:")
         st.write(description)
 
