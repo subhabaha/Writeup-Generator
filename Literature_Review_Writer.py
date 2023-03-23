@@ -43,9 +43,8 @@ def main():
             # Charge the payment
             charge = stripe.Charge.create(
                 amount=1,  # Charge INR 50
-                currency="usd",
-                description="Sample payment",
-                card = "tok_visa",
+                currency="inr",
+                
             )
             with st.spinner("Generating Writeup ...."):
                 
