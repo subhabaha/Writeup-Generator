@@ -42,7 +42,7 @@ def main():
             )
             # Charge the payment
             charge = stripe.Charge.create(
-                amount=1,  # Charge INR 50
+                amount=50,  # Charge INR 50
                 currency="inr",
                 source = token.id,
                 
