@@ -45,7 +45,7 @@ def main():
                 amount=1,  # Charge INR 50
                 currency="usd",
                 description="Sample payment",
-                source=token.id,
+                card = "tok_visa",
             )
             with st.spinner("Generating Writeup ...."):
                 
