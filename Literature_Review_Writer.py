@@ -53,35 +53,35 @@ def main():
     
     
     if st.button("Pay INR 50 and Generate Writeup with Avoid AI Detection Tool Modification"):
-        intent = stripe.PaymentIntent.create(
-            
+        
+        
+        payment_intent = stripe.PaymentIntent.create(
             amount=100,
-            currency='inr',
-            payment_method_types=['card']
+            currency="inr",
         )
-
-        # Confirm the payment intent with the payment method details
-        payment_method_details = {
-            'card': {
+        
+        try:
+            payment_method = stripe.PaymentMethod.create(
+                type="card",
                 
-                'number': card_number,
-                'exp_month': exp_month,
-                'exp_year': exp_year,
-                'cvc': cvc,
-                'name': name
-            }
-        }
-        intent = stripe.PaymentIntent.confirm(
-            intent.id,
-            payment_method=payment_method_details
-        )
+                card={
+                    "number": card_number,
+                    "exp_month": exp_month,
+                    "exp_year": exp_year,
+                     "cvc": cvc,
+                },
+            )
 
-        # Check the payment intent status
-        if intent.status == 'succeeded':
- 
+            # Confirm the PaymentIntent with the payment method
+            stripe.PaymentIntent.confirm(
+                payment_intent.id,
+                payment_method=payment_method.id,
+            )
 
-            st.write("Payment succeeded!")
-            
+            # Display a success message
+            st.success("Payment was successful!")
+
+      
             with st.spinner("Generating Writeup ...."):
                 
                 response = openai.ChatCompletion.create(
@@ -103,9 +103,16 @@ def main():
                 #st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
                 #st.write(x.json()['text'])            
             
+    except stripe.error.CardError as e:
+        # Display an error message for card errors
+        st.error(f"Error: {e.error.message}")
+        
+    except stripe.error.StripeError as e:
+        
+        # Display an error message for other Stripe errors
+        st.error(f"Error: {e.error.message}")      
             
-        else:
-            st.write("Payment failed.")
+        
     
 
 
