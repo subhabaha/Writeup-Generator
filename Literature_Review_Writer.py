@@ -96,7 +96,7 @@ def main():
                 myobj = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
                 x = requests.post(config.wordai_url, json = myobj)
                 
-                myobj1 = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
+                myobj1 = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key, 'output': 'json','rewrite_num' : 1, 'uniqueness': 2, 'return_rewrites':2,}
                 x1 = requests.post(config.wordai_url1, json = myobj1)
 
 
