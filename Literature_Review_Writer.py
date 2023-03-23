@@ -53,25 +53,33 @@ def main():
     
     
     if st.button("Pay INR 50 and Generate Writeup with Avoid AI Detection Tool Modification"):
-        
-        try:
+
+        # Create a payment intent
+        intent = stripe.PaymentIntent.create(
+            amount=100,
+            currency='inr',
+            payment_method_types=['card']
+        )
+
+        # Confirm the payment intent with the payment method details
+        payment_method_details = {
+            'card': {
+                'number': number,
+                'exp_month': exp_month,
+                'exp_year': exp_year,
+                'cvc': cvc,
+                'name': name
+            }
+        }
+        intent = stripe.PaymentIntent.confirm(
+            intent.id,
+            payment_method=payment_method_details
+        )
+
+        # Check the payment intent status
+        if intent.status == 'succeeded':
+            st.write("Payment succeeded!")
             
-            token = stripe.Token.create(
-              card={
-                "number": card_number,
-                "exp_month": exp_month,
-                "exp_year": exp_year,
-                "cvc": cvc,
-                "name": name
-              },
-            )
-            # Charge the payment
-            charge = stripe.Charge.create(
-                amount=50,  # Charge INR 50
-                currency="inr",
-                source = token.id,
-                
-            )
             with st.spinner("Generating Writeup ...."):
                 
                 response = openai.ChatCompletion.create(
@@ -91,10 +99,13 @@ def main():
             st.subheader("Generated Writeup")
             st.write(description)
             #st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
-            #st.write(x.json()['text'])
-        except stripe.error.CardError as e:
+            #st.write(x.json()['text'])            
             
-            st.write(f"Error: {e.error.message}")
+            
+        else:
+            st.write("Payment failed.")
+    
+
 
 if __name__ == '__main__':
    main()
