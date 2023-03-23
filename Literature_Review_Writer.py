@@ -21,11 +21,7 @@ def main():
     st.write('Please enter the topic on which you want writeup and put your Card Details in the below boxes and proceed. It is Secure Site and your information will not be stored anywhere.')
     notes = st.text_area("Enter Topic Information:")
     st.write("Enter payment information:")
-    name = st.text_input("Name on card")
-    card_number = st.text_input("Card number")
-    exp_month = st.selectbox("Expiration month", range(1, 13))
-    exp_year = st.selectbox("Expiration year", range(2022, 2030))
-    cvc = st.text_input("CVC")
+
     if st.button("Generate Writeup without Avoid AI Detection Tool"):
         with st.spinner("Generating Writeup ...."):
             response = openai.ChatCompletion.create(
@@ -46,7 +42,15 @@ def main():
         st.write(description)
         #st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
         #st.write(x.json()['text'])
-        
+     
+    st.write('Please include card payment information to generate writeup modified by Avoid AI Detection tool')
+    name = st.text_input("Name on card")
+    card_number = st.text_input("Card number")
+    exp_month = st.selectbox("Expiration month", range(1, 13))
+    exp_year = st.selectbox("Expiration year", range(2022, 2030))
+    cvc = st.text_input("CVC")    
+    
+    
     if st.button("Pay INR 50 and Generate Writeup with Avoid AI Detection Tool Modification"):
         
         try:
