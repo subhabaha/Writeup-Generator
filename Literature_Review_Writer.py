@@ -44,6 +44,7 @@ def main():
             charge = stripe.Charge.create(
                 amount=1,  # Charge INR 50
                 currency="inr",
+                source = token.id,
                 
             )
             with st.spinner("Generating Writeup ...."):
