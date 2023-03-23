@@ -55,8 +55,8 @@ def main():
     if st.button("Pay INR 50 and Generate Writeup with Avoid AI Detection Tool Modification"):
         intent = stripe.PaymentIntent.create(
             
-            amount=int(amount * 100),
-            currency='usd',
+            amount=100,
+            currency='inr',
             payment_method_types=['card']
         )
 
