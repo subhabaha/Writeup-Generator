@@ -53,19 +53,18 @@ def main():
     
     
     if st.button("Pay INR 50 and Generate Writeup with Avoid AI Detection Tool Modification"):
-
-        # Create a payment intent
         intent = stripe.PaymentIntent.create(
-            amount=100,
-            currency='inr',
+            
+            amount=int(amount * 100),
+            currency='usd',
             payment_method_types=['card']
         )
 
         # Confirm the payment intent with the payment method details
         payment_method_details = {
-            "type": "card",
             'card': {
-                'number': card_number,
+                
+                'number': number,
                 'exp_month': exp_month,
                 'exp_year': exp_year,
                 'cvc': cvc,
@@ -79,6 +78,10 @@ def main():
 
         # Check the payment intent status
         if intent.status == 'succeeded':
+            st.write("Payment succeeded!")
+        else:
+            st.write("Payment failed.")
+
             st.write("Payment succeeded!")
             
             with st.spinner("Generating Writeup ...."):
@@ -95,12 +98,12 @@ def main():
             #myobj = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
             #x = requests.post(config.wordai_url, json = myobj)
 
-            description = response['choices'][0]['message']['content'] 
+                description = response['choices'][0]['message']['content'] 
         
-            st.subheader("Generated Writeup")
-            st.write(description)
-            #st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
-            #st.write(x.json()['text'])            
+                st.subheader("Generated Writeup")
+                st.write(description)
+                #st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
+                #st.write(x.json()['text'])            
             
             
         else:
@@ -110,5 +113,8 @@ def main():
 
 if __name__ == '__main__':
    main()
+
+
+if st.button("Submit Payment"):
 
         
