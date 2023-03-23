@@ -107,13 +107,6 @@ def main():
         # Display an error message for card errors
         st.error(f"Error: {e.error.message}")
         
-    except stripe.error.StripeError as e:
-        
-        # Display an error message for other Stripe errors
-        st.error(f"Error: {e.error.message}")      
-            
-        
-    
 
 
 if __name__ == '__main__':
