@@ -64,7 +64,7 @@ def main():
         # Confirm the payment intent with the payment method details
         payment_method_details = {
             'card': {
-                'number': number,
+                'number': card_number,
                 'exp_month': exp_month,
                 'exp_year': exp_year,
                 'cvc': cvc,
