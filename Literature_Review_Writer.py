@@ -20,8 +20,8 @@ def main():
     st.write('We charge a nominal fee of INR 50.00 (0.65 USD) for each literature review which is transformed into Human writing form using WordAI Avoid AI Detection Tool Makeover so that you can use the content without much effort.')
     st.write('Please enter the topic on which you want writeup and put your Card Details in the below boxes and proceed. It is Secure Site and your information will not be stored anywhere.')
     notes = st.text_area("Enter Topic Information:")
-    st.write("Enter payment information:")
-
+    
+    st.subheader('Free Tool to generate writeup')
     if st.button("Generate Writeup without Avoid AI Detection Tool"):
         with st.spinner("Generating Writeup ...."):
             response = openai.ChatCompletion.create(
@@ -43,7 +43,8 @@ def main():
         #st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
         #st.write(x.json()['text'])
      
-    st.write('Please include card payment information to generate writeup modified by Avoid AI Detection tool')
+    st.subheader('Please include card payment information to generate writeup modified by Avoid AI Detection tool')
+    st.write("Enter payment information:")
     name = st.text_input("Name on card")
     card_number = st.text_input("Card number")
     exp_month = st.selectbox("Expiration month", range(1, 13))
