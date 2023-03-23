@@ -78,9 +78,7 @@ def main():
 
         # Check the payment intent status
         if intent.status == 'succeeded':
-            st.write("Payment succeeded!")
-        else:
-            st.write("Payment failed.")
+ 
 
             st.write("Payment succeeded!")
             
