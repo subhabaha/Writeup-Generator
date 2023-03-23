@@ -93,15 +93,21 @@ def main():
                     #frequency_penalty=0,
                     #presence_penalty=0
                 )
-            #myobj = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
-            #x = requests.post(config.wordai_url, json = myobj)
+                myobj = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
+                x = requests.post(config.wordai_url, json = myobj)
+                
+                myobj1 = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
+                x1 = requests.post(config.wordai_url, json = myobj1)
+
 
                 description = response['choices'][0]['message']['content'] 
         
                 st.subheader("Generated Writeup")
                 st.write(description)
-                #st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
-                #st.write(x.json()['text'])            
+                st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
+                st.write(x.json()['text']) 
+                st.subheader("Modified Writeup with WordAI Normal Paraphraser")
+                st.write(x1.json()['text'])     
             
         except stripe.error.CardError as e:
             # Display an error message for card errors
