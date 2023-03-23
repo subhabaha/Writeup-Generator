@@ -47,27 +47,29 @@ def main():
                 description="Sample payment",
                 source=token.id,
             )
-        with st.spinner("Generating Writeup ...."):
-            
-            response = openai.ChatCompletion.create(
-              model="gpt-3.5-turbo",
-              messages=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words and include real references and in-line citations on topic \n\n{notes}\n\nDescription:'}]
-              #temperature=0.7,
-              #max_tokens=3000,
-              #top_p=1,
-              #frequency_penalty=0,
-              #presence_penalty=0
-            )
+            with st.spinner("Generating Writeup ...."):
+                
+                response = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words and include real references and in-line citations on topic \n\n{notes}\n\nDescription:'}]
+                    #temperature=0.7,
+                    #max_tokens=3000,
+                    #top_p=1,
+                    #frequency_penalty=0,
+                    #presence_penalty=0
+                )
             #myobj = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
             #x = requests.post(config.wordai_url, json = myobj)
 
-        description = response['choices'][0]['message']['content'] 
+            description = response['choices'][0]['message']['content'] 
         
-        st.subheader("Generated Writeup")
-        st.write(description)
-        #st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
-        #st.write(x.json()['text'])
-        
+            st.subheader("Generated Writeup")
+            st.write(description)
+            #st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
+            #st.write(x.json()['text'])
+        except stripe.error.CardError as e:
+            
+            st.write(f"Error: {e.error.message}")
 
 
 if __name__ == '__main__':
