@@ -16,14 +16,15 @@ def main():
     st.write('This is for reference purpose only.')
     st.write('Please Note: The researcher is suggested to cross-check validity of the generated content before final use in any manuscript.')
     st.write('We charge a nominal fee of INR 50.00 (0.65 USD) for each literature review which is transformed into Human writing form using WordAI Avoid AI Detection Tool Makeover so that you can use the content without much effort.')
-    st.write('Please put your Card Details in the below boxes and proceed. It is Secure Site and your information will not be stored anywhere.')
+    st.write('Please enter the topic on which you want writeup and put your Card Details in the below boxes and proceed. It is Secure Site and your information will not be stored anywhere.')
+    notes = st.text_area("Enter Topic Information:")
     st.write("Enter payment information:")
     name = st.text_input("Name on card")
     card_number = st.text_input("Card number")
     exp_month = st.selectbox("Expiration month", range(1, 13))
     exp_year = st.selectbox("Expiration year", range(2022, 2030))
     cvc = st.text_input("CVC")
-    notes = st.text_area("Enter Topic Information:")
+    
     if st.button("Pay INR 50 and Generate Writeup"):
         with st.spinner("Generating Writeup ...."):
             response = openai.ChatCompletion.create(
