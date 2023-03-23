@@ -17,7 +17,7 @@ def main():
     st.write('Please Note: The researcher is suggested to cross-check validity of the generated content before final use in any manuscript.')
     st.write('We charge a nominal fee of INR 50.00 (0.65 USD) for each literature review which is transformed into Human writing form using WordAI Avoid AI Detection Tool Makeover so that you can use the content without much effort')
     notes = st.text_area("Enter Topic Information:")
-    if st.button("Generate Writeup"):
+    if st.button("Pay INR 50 and Generate Writeup"):
         with st.spinner("Generating Writeup ...."):
             response = openai.ChatCompletion.create(
               model="gpt-3.5-turbo",
