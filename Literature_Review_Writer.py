@@ -15,6 +15,7 @@ def main():
     st.write('Please write any topic of interest in the below box to get detailed writeup.')
     st.write('This is for reference purpose only.')
     st.write('Please Note: The researcher is suggested to cross-check validity of the generated content before final use in any manuscript.')
+    st.write('We charge a nominal fee of INR 50.00 (0.65 USD) for each literature review which is transformed into Human writing form using WordAI Avoid AI Detection Tool Makeover so that you can use the content without much effort')
     notes = st.text_area("Enter Topic Information:")
     if st.button("Generate Writeup"):
         with st.spinner("Generating Writeup ...."):
