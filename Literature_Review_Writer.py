@@ -6,6 +6,8 @@ import requests
 import stripe
 
 openai.api_key=config.api_key
+# Set your Stripe API key
+stripe.api_key = config.stripe_api_key
 
 def main():
     st.title("Automated Writeup Generator")
@@ -26,7 +28,27 @@ def main():
     cvc = st.text_input("CVC")
     
     if st.button("Pay INR 50 and Generate Writeup"):
+        
+        try:
+            
+            token = stripe.Token.create(
+              card={
+                "number": card_number,
+                "exp_month": exp_month,
+                "exp_year": exp_year,
+                "cvc": cvc,
+                "name": name
+              },
+            )
+            # Charge the payment
+            charge = stripe.Charge.create(
+                amount=50,  # Charge INR 50
+                currency="inr",
+                description="Sample payment",
+                source=token.id,
+            )
         with st.spinner("Generating Writeup ...."):
+            
             response = openai.ChatCompletion.create(
               model="gpt-3.5-turbo",
               messages=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words and include real references and in-line citations on topic \n\n{notes}\n\nDescription:'}]
