@@ -64,7 +64,7 @@ def main():
         payment_method_details = {
             'card': {
                 
-                'number': number,
+                'number': card_number,
                 'exp_month': exp_month,
                 'exp_year': exp_year,
                 'cvc': cvc,
