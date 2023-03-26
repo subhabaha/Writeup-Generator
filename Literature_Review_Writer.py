@@ -79,7 +79,8 @@ def main():
                  'data-currency="inr"' +
                  'data-locale="auto"' +
                  'data-payment_intent_client_secret="' + intent.client_secret + '">' +
-                 '</script></form>', unsafe_allow_html=True)
+                 '</script></form>')
+        #, unsafe_allow_html=True)
         
         payment_intent_id = st.experimental_get_query_params().get("payment_intent")
         if payment_intent_id:
