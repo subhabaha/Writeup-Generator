@@ -114,7 +114,7 @@ def main():
                 #st.write(x1.json()['text'])   
                         
                     
-        """
+"""
         try:
             payment_method = stripe.PaymentMethod.create(
                 type="card",
