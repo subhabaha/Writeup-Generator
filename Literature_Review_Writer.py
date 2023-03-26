@@ -81,7 +81,7 @@ def main():
                '</script></form>'
   
 
-        st.markdown(form, unsafe_allow_html=True)
+        st.markdown(form) #, unsafe_allow_html=True)
         
         payment_intent_id = st.experimental_get_query_params().get("payment_intent")
         if payment_intent_id:
