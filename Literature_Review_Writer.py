@@ -113,7 +113,21 @@ def main():
                 #st.subheader("Modified Writeup with WordAI Normal Paraphraser")
                 #st.write(x1.json()['text'])   
                         
-                    
+                elif intent.status == "requires_payment_method":
+                     # Display an error message if the payment fails
+                     st.error("Payment failed: please try again with a different payment method.")
+            
+                elif intent.status == "requires_action":
+                     # Display a message if the payment requires 3D Secure authentication
+                     st.info("3D Secure authentication required. Please check your phone or email for instructions.")
+        
+            except stripe.error.CardError as e:
+                # Display error message if payment fails
+                st.error(f"Payment failed: {e.error.message}")
+    
+        else:
+            # Display a message if the user hasn't paid yet
+            st.info("Please make a payment to calculate the result.")    
 """
         try:
             payment_method = stripe.PaymentMethod.create(
