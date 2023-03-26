@@ -84,7 +84,6 @@ def main():
                # payment_method=payment_method.id,
                 return_url = 'https://subhabaha-writeup-generator-literature-review-writer-0t4ldh.streamlit.app/',
                 payment_method.id,
-
             )
 
             # Display a success message
