@@ -58,7 +58,7 @@ def main():
         payment_intent = stripe.PaymentIntent.create(
             amount=100,
             currency="inr",
-            payment_method_types=['card'],
+            #payment_method_types=['card'],
 
             automatic_payment_methods={
                 'enabled': True,
