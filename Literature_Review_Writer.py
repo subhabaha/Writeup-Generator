@@ -186,7 +186,7 @@ def main():
         except stripe.error.StripeError as e:
             # Display an error message for other Stripe errors
             st.error(f"Error: {e.error.message}")
-"""
+""" 
 if __name__ == '__main__':
    main()
 
