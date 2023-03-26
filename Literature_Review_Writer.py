@@ -58,6 +58,13 @@ def main():
         payment_intent = stripe.PaymentIntent.create(
             amount=100,
             currency="inr",
+            payment_method_types=['card'],
+            payment_method_options={
+                'card': {
+                    'request_three_d_secure': 'any'
+                 }
+             },
+            
         )
         
         try:
@@ -68,7 +75,7 @@ def main():
                     "number": card_number,
                     "exp_month": exp_month,
                     "exp_year": exp_year,
-                     "cvc": cvc,
+                    "cvc": cvc,
                 },
             )
 
