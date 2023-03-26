@@ -58,15 +58,63 @@ def main():
         payment_intent = stripe.PaymentIntent.create(
             amount=100,
             currency="inr",
-            #payment_method_types=['card'],
+            payment_method_types=['card'],
 
-            automatic_payment_methods={
-                'enabled': True,
-            },
+            #automatic_payment_methods={
+            #    'enabled': True,
+            #},
             payment_method_options={"card": {"request_three_d_secure": "any"}},
             
         )
+        # Display the payment form
+        st.write(f'<form action="{payment_intent.client_secret}" method="post">' +
+             '<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"' +
+             'data-key="' + stripe.api_key + '"' +
+             'data-amount="100"' +
+             'data-name="Literature Review Writeup"' +
+             'data-description="Payment for Literature Review"' +
+             'data-image="https://stripe.com/img/documentation/checkout/marketplace.png"' +
+             'data-currency="inr"' +
+             'data-locale="auto"' +
+             'data-payment_intent_client_secret="' + payment_intent.client_secret + '">' +
+             '</script></form>', unsafe_allow_html=True)
         
+        payment_intent_id = st.experimental_get_query_params().get("payment_intent")
+        if payment_intent_id:
+            try:
+                # Retrieve the PaymentIntent object
+                intent = stripe.PaymentIntent.retrieve(payment_intent_id)
+                
+                if intent.status == "succeeded":
+                    st.success("Payment was successful!")
+                    with st.spinner("Generating Writeup ...."):
+                        response = openai.ChatCompletion.create(
+                            model="gpt-3.5-turbo",
+                            messages=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words and include real references and in-line citations on topic \n\n{notes}\n\nDescription:'}]
+                    #temperature=0.7,
+                    #max_tokens=3000,
+                    #top_p=1,
+                    #frequency_penalty=0,
+                    #presence_penalty=0
+                        )
+                        myobj = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
+                        x = requests.post(config.wordai_url, json = myobj)
+                
+                #myobj1 = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key, 'output': 'json','rewrite_num' : 1, 'uniqueness': 2, 'return_rewrites':2,}
+                #x1 = requests.post(config.wordai_url1, json = myobj1)
+
+
+                        description = response['choices'][0]['message']['content'] 
+        
+                        st.subheader("Generated Writeup")
+                        st.write(description)
+                        st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
+                        st.write(x.json()['text']) 
+                #st.subheader("Modified Writeup with WordAI Normal Paraphraser")
+                #st.write(x1.json()['text'])   
+                        
+                    
+        """
         try:
             payment_method = stripe.PaymentMethod.create(
                 type="card",
@@ -124,7 +172,7 @@ def main():
         except stripe.error.StripeError as e:
             # Display an error message for other Stripe errors
             st.error(f"Error: {e.error.message}")
-
+"""
 if __name__ == '__main__':
    main()
 
