@@ -82,7 +82,7 @@ def main():
             stripe.PaymentIntent.confirm(
                 payment_intent.id,
                # payment_method=payment_method.id,
-                return_url = 'https://subhabaha-writeup-generator-literature-review-writer-0t4ldh.streamlit.app/'
+                return_url = 'https://subhabaha-writeup-generator-literature-review-writer-0t4ldh.streamlit.app/',
                 payment_method='card',
 
             )
