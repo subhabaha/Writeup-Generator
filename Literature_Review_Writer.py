@@ -68,23 +68,22 @@ def main():
         )
         
         try:
-           # payment_method = stripe.PaymentMethod.create(
-           #     type="card",
-                
-          #      card={
-         #           "number": card_number,
-          #          "exp_month": exp_month,
-          #          "exp_year": exp_year,
-           #         "cvc": cvc,
-           #     },
-         #   )
+            payment_method = stripe.PaymentMethod.create(
+                type="card",
+                card={
+                    "number": card_number,
+                    "exp_month": exp_month,
+                    "exp_year": exp_year,
+                    "cvc": cvc,
+                    },
+                )
 
             # Confirm the PaymentIntent with the payment method
             stripe.PaymentIntent.confirm(
                 payment_intent.id,
                # payment_method=payment_method.id,
                 return_url = 'https://subhabaha-writeup-generator-literature-review-writer-0t4ldh.streamlit.app/',
-               # payment_method_options.card
+                payment_method.id,
 
             )
 
