@@ -81,9 +81,9 @@ def main():
             # Confirm the PaymentIntent with the payment method
             stripe.PaymentIntent.confirm(
                 payment_intent.id,
-               # payment_method=payment_method.id,
+                payment_method=payment_method.id,
                 return_url = 'https://subhabaha-writeup-generator-literature-review-writer-0t4ldh.streamlit.app/',
-                payment_method.id,
+                
             )
 
             # Display a success message
