@@ -69,18 +69,19 @@ def main():
         
         st.write(intent.client_secret)
         # Display the payment form
-        st.write(f'<form action="{intent.client_secret}" method="post">' +
-                 '<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"' +
-                 'data-key="' + stripe.api_key + '"' +
-                 'data-amount="100"' +
-                 'data-name="Literature Review Writeup"' +
-                 'data-description="Payment for Literature Review"' +
-                 'data-image="https://stripe.com/img/documentation/checkout/marketplace.png"' +
-                 'data-currency="inr"' +
-                 'data-locale="auto"' +
-                 'data-payment_intent_client_secret="' + intent.client_secret + '">' +
-                 '</script></form>')
-        #, unsafe_allow_html=True)
+        form = f'<form action="{intent.client_secret}" method="post">' + \
+               '<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"' + \
+               f'data-key="{stripe.api_key}"' + \
+               'data-amount="100"' + \
+               'data-name="Calculate Result App"' + \
+               'data-description="Payment for calculate result app"' + \
+               'data-image="https://stripe.com/img/documentation/checkout/marketplace.png"' + \
+               'data-currency="usd"' + \
+               f'data-payment_intent_client_secret="{intent.client_secret}">' + \
+               '</script></form>'
+  
+
+        st.markdown(form, unsafe_allow_html=True)
         
         payment_intent_id = st.experimental_get_query_params().get("payment_intent")
         if payment_intent_id:
