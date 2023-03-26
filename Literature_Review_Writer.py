@@ -128,65 +128,7 @@ def main():
         else:
             # Display a message if the user hasn't paid yet
             st.info("Please make a payment to calculate the result.")    
-"""
-        try:
-            payment_method = stripe.PaymentMethod.create(
-                type="card",
-                card={
-                    "number": card_number,
-                    "exp_month": exp_month,
-                    "exp_year": exp_year,
-                    "cvc": cvc,
-                    },
-                )
 
-            # Confirm the PaymentIntent with the payment method
-            stripe.PaymentIntent.confirm(
-                payment_intent.id,
-                payment_method=payment_method.id,
-                return_url = 'https://subhabaha-writeup-generator-literature-review-writer-0t4ldh.streamlit.app/',
-                
-            )
-
-            # Display a success message
-            st.success("Payment was successful!")
-
-      
-            with st.spinner("Generating Writeup ...."):
-                
-                response = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo",
-                    messages=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words and include real references and in-line citations on topic \n\n{notes}\n\nDescription:'}]
-                    #temperature=0.7,
-                    #max_tokens=3000,
-                    #top_p=1,
-                    #frequency_penalty=0,
-                    #presence_penalty=0
-                )
-                myobj = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key }
-                x = requests.post(config.wordai_url, json = myobj)
-                
-                #myobj1 = {'input': response['choices'][0]['message']['content'], 'email': config.email, 'key':config.wordai_api_key, 'output': 'json','rewrite_num' : 1, 'uniqueness': 2, 'return_rewrites':2,}
-                #x1 = requests.post(config.wordai_url1, json = myobj1)
-
-
-                description = response['choices'][0]['message']['content'] 
-        
-                st.subheader("Generated Writeup")
-                st.write(description)
-                st.subheader("Modified Writeup with WordAI to avoid AI Tool Detection")
-                st.write(x.json()['text']) 
-                #st.subheader("Modified Writeup with WordAI Normal Paraphraser")
-                #st.write(x1.json()['text'])     
-            
-        except stripe.error.CardError as e:
-            # Display an error message for card errors
-            st.error(f"Error: {e.error.message}")
-        
-        except stripe.error.StripeError as e:
-            # Display an error message for other Stripe errors
-            st.error(f"Error: {e.error.message}")
-""" 
 if __name__ == '__main__':
    main()
 
