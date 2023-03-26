@@ -63,7 +63,10 @@ def main():
                 'card': {
                     'request_three_d_secure': 'any'
                  }
-             },
+            },
+            automatic_payment_methods={
+                'enabled': True,
+            },
             
         )
         
