@@ -55,7 +55,7 @@ def main():
     if st.button("Pay INR 50 and Generate Writeup with Avoid AI Detection Tool Modification"):
         
         
-        payment_intent = stripe.PaymentIntent.create(
+        intent = stripe.PaymentIntent.create(
             amount=100,
             currency="inr",
             payment_method_types=['card'],
@@ -66,6 +66,8 @@ def main():
             payment_method_options={"card": {"request_three_d_secure": "any"}},
             
         )
+        
+        st.write(intent.client_secret)
         # Display the payment form
         st.write(f'<form action="{payment_intent.client_secret}" method="post">' +
                  '<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"' +
