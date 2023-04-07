@@ -44,7 +44,7 @@ def main():
 
     notes = st.text_area("Enter Topic Information:")
     
-    st.subheader('Free Tool to generate writeup')
+    st.subheader('Generate Writeup')
     if st.button("Pay INR 50"):
         
          #First Payment will happen and then once it happen following code should run
