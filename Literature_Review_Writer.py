@@ -60,24 +60,25 @@ def main():
         p = open("./test.html")
         components.html(p.read(),height=800,width=500)
 
-        id = st.text_input('Enter Payment Id Generated After Making Payment')  
+    id = st.text_input('Enter Payment Id Generated After Making Payment')  
         
-        if st.button("Generate Writeup"):
-            payment = client.payment.fetch(id)
-            if payment['status'] == 'captured' or payment['status'] == 'authorized':
-                st.write("Payment successful")
-                with st.spinner("Generating Writeup ..."):
-                    response = openai.ChatCompletion.create(
-                        model="gpt-3.5-turbo",
-                        messages=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words. Include real references. Include in-text citations. Write on topic \n\n{notes}\n\nDescription:'}]
+    if st.button("Generate Writeup"):
+        payment = client.payment.fetch(id)
+        
+        if payment['status'] == 'captured' or payment['status'] == 'authorized':
+            st.write("Payment successful")
+            with st.spinner("Generating Writeup ..."):
+                response = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words. Include real references. Include in-text citations. Write on topic \n\n{notes}\n\nDescription:'}]
              
-                    )
-                description = response['choices'][0]['message']['content'] 
-                st.subheader("Generated Literature Review")
-                st.write(description)    
+                 )
+            description = response['choices'][0]['message']['content'] 
+            st.subheader("Generated Literature Review")
+            st.write(description)    
         
-            else:
-                st.write("Payment failed")
+        else:
+            st.write("Payment failed")
        
 
 if __name__ == '__main__':
