@@ -62,7 +62,7 @@ def main():
 
         id = st.text_input('Enter Payment Id Generated After Making Payment')  
         
-        f st.button("Generate Blog"):
+        if st.button("Generate Writeup"):
             payment = client.payment.fetch(id)
             if payment['status'] == 'captured' or payment['status'] == 'authorized':
                 st.write("Payment successful")
