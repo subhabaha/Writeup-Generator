@@ -30,7 +30,7 @@ openai.api_key=config.api_key
 # Set your Stripe API key
 
 def main():
-    st.title("Automated Writeup Generator")
+    st.title("Research Writer")
     st.subheader('This app has been developed and maintained by InstaDataHelp Analytics Services')
     st.write('This app is supposed to help in writing literature review and writeup on any topic. The write-up includes in-text citations and references')
     st.write('Please mail to info@instadatahelp.com for suggestions and improvements. Per write-up cost is INR 50 currently. The articles generated are plag-free.')
