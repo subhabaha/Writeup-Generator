@@ -49,7 +49,7 @@ def main():
         
          #First Payment will happen and then once it happen following code should run
         order = client.order.create({
-            "amount": int(5000),
+            "amount": int(100),
             "currency": "INR",
             
         })
