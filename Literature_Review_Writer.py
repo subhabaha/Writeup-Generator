@@ -41,6 +41,7 @@ def main():
     #st.write('Please enter your topic and click Pay INR 50. Once payment ID is generated, please put that in the below box and generate blog writeup.')
     #st.write('Please Whatsapp or call at +91 9903726517 if you face any issue after payment. Currently accepting payments from India only.')
     #st.write('It is secure RazorPay Payment Gateway and your payment details will not be stored anywhere.')
+    st.write('Please visit https://www.instadatahelp.com/research-writer/ for details')
 
     notes = st.text_area("Enter Topic Information:")
     
@@ -49,7 +50,7 @@ def main():
         
          #First Payment will happen and then once it happen following code should run
         order = client.order.create({
-            "amount": int(100),
+            "amount": int(5000),
             "currency": "INR",
             
         })
