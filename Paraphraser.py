@@ -29,14 +29,15 @@ openai.api_key=config.api_key
 def main():
     st.title("Summarizer")
     st.subheader('This app has been developed and maintained by InstaDataHelp Analytics Services')
+    st.subheader('Please visit https://www.instadatahelp.com/summarizer/ for details')
     notes = st.text_area("Enter Text to summarize:")
     
     st.subheader('Payment for Summary Generation')
-    if st.button("Pay INR 25"):
+    if st.button("Pay INR 15"):
         
          #First Payment will happen and then once it happen following code should run
         order = client.order.create({
-            "amount": int(100),
+            "amount": int(1500),
             "currency": "INR",
             
         })
