@@ -27,7 +27,7 @@ def set_to_local_storage(k, v):
 
 
 #openai.api_key=config.api_key
-client = OpenAI(
+clt = OpenAI(
     # defaults to os.environ.get("OPENAI_API_KEY")
     api_key=config.api_key,
 )
@@ -55,7 +55,7 @@ def main():
     if st.button("Pay INR 50"):
         
          #First Payment will happen and then once it happen following code should run
-        order = client.order.create({
+        order = clt.order.create({
             "amount": int(5000),
             "currency": "INR",
             
