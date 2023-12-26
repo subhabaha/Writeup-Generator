@@ -1,4 +1,4 @@
-import openai
+from openai import OpenAI
 import streamlit as st
 #from charset_normalizer import md__mypyc
 import config
@@ -27,7 +27,7 @@ def set_to_local_storage(k, v):
 
 
 #openai.api_key=config.api_key
-client = openai(
+client = OpenAI(
     # defaults to os.environ.get("OPENAI_API_KEY")
     api_key=config.api_key,
 )
@@ -75,8 +75,8 @@ def main():
         if payment['status'] == 'captured' or payment['status'] == 'authorized':
             st.write("Payment successful")
             with st.spinner("Generating Writeup ..."):
-                response = client.chat.completions.create(
-                    model="gpt-3.5-turbo",
+                response = client.completions.create(
+                    model="gpt-3.5-turbo-instruct",
                     prompt=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words. Include real references. Include in-text citations. Write on topic \n\n{notes}\n\nDescription:'}]
              
                  )
