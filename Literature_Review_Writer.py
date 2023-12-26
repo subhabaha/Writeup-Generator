@@ -71,7 +71,7 @@ def main():
             with st.spinner("Generating Writeup ..."):
                 response = openai.completions.create(
                     model="gpt-3.5-turbo-instructions",
-                    messages=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words. Include real references. Include in-text citations. Write on topic \n\n{notes}\n\nDescription:'}]
+                    prompt=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words. Include real references. Include in-text citations. Write on topic \n\n{notes}\n\nDescription:'}]
              
                  )
             description = response['choices'][0]['message']['content'] 
