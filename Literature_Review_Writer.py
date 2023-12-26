@@ -27,7 +27,7 @@ def set_to_local_storage(k, v):
 
 
 #openai.api_key=config.api_key
-client = OpenAI(
+client = openai(
     # defaults to os.environ.get("OPENAI_API_KEY")
     api_key=config.api_key,
 )
