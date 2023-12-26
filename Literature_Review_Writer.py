@@ -26,7 +26,13 @@ def set_to_local_storage(k, v):
     )
 
 
-openai.api_key=config.api_key
+#openai.api_key=config.api_key
+client = OpenAI(
+    # defaults to os.environ.get("OPENAI_API_KEY")
+    api_key=config.api_key,
+)
+
+
 # Set your Stripe API key
 
 def main():
@@ -69,8 +75,8 @@ def main():
         if payment['status'] == 'captured' or payment['status'] == 'authorized':
             st.write("Payment successful")
             with st.spinner("Generating Writeup ..."):
-                response = openai.completions.create(
-                    model="gpt-3.5-turbo-instructions",
+                response = client.chat.completions.create(
+                    model="gpt-3.5-turbo",
                     prompt=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words. Include real references. Include in-text citations. Write on topic \n\n{notes}\n\nDescription:'}]
              
                  )
