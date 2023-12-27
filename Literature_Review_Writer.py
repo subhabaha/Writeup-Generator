@@ -76,7 +76,7 @@ def main():
         if payment['status'] == 'captured' or payment['status'] == 'authorized':
             st.write("Payment successful")
             with st.spinner("Generating Writeup ..."):
-                response = client.completions.create(
+                response = clt.completions.create(
                     model="gpt-3.5-turbo-instruct",
                     prompt=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words. Include real references. Include in-text citations. Write on topic \n\n{notes}\n\nDescription:'}]
              
