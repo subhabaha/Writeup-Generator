@@ -1,4 +1,4 @@
-from openai import OpenAI
+from openai._client import OpenAI
 import streamlit as st
 #from charset_normalizer import md__mypyc
 import config
