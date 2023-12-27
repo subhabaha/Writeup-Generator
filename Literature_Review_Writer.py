@@ -56,7 +56,7 @@ def main():
     if st.button("Pay INR 50"):
         
          #First Payment will happen and then once it happen following code should run
-        order = clt.order.create({
+        order = client.order.create({
             "amount": int(5000),
             "currency": "INR",
             
@@ -77,7 +77,7 @@ def main():
             st.write("Payment successful")
             with st.spinner("Generating Writeup ..."):
                 response = clt.completions.create(
-                    model="gpt-3.5-turbo-instruct",
+                    model="gpt-3.5-turbo",
                     prompt=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words. Include real references. Include in-text citations. Write on topic \n\n{notes}\n\nDescription:'}]
              
                  )
