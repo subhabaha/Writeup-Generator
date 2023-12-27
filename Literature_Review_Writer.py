@@ -1,5 +1,5 @@
 import openai
-from openai import OpenAI
+#from openai import OpenAI
 import streamlit as st
 #from charset_normalizer import md__mypyc
 import config
@@ -28,7 +28,7 @@ def set_to_local_storage(k, v):
 
 
 #openai.api_key=config.api_key
-clt = OpenAI(
+clt = openai(
     # defaults to os.environ.get("OPENAI_API_KEY")
     api_key=config.api_key,
 )
