@@ -81,7 +81,7 @@ def main():
                     messages=[{'role':'user','content':f'You act as reseracher. Write research paper with more than 3000 words. Include real references. Include in-text citations. Write on topic \n\n{notes}\n\nDescription:'}]
              
                  )
-            description = response['choices'][0]['message']['content'] 
+            description = response.choices[0].message.content
             st.subheader("Generated Literature Review")
             st.write(description)    
         
