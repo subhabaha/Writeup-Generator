@@ -1,4 +1,4 @@
-api_key = "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"
+api_key = "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"
 wordai_api_key = "82f416b96f4d5f5ef2eb504735281aa6"
 email = "subhabaha@msn.com"
 wordai_url = 'https://wai.wordai.com/api/avoid'
